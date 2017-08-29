@@ -13,12 +13,10 @@ namespace Subtle
         {
             var srtFileName = "C:\\Users\\robko\\Desktop\\1_2.srt";
             var subtitles = FillSubtitles(srtFileName);
-            var time = new TimeSpan();
-            // Timer timer = new Timer(ShowSubtitles, null, 0, 100);
-            // while (_currentTime <= new TimeSpan(0, 0, 0, 30))
-            // {
+         
+            if (!subtitles.Any())
+                throw new Exception("Subtitle file either not filled in or srt file is invalid.");
 
-            // }
             var startListTime = subtitles.First().StartTime;
             var endListTime = subtitles.Last().EndTime;
 
@@ -59,9 +57,9 @@ namespace Subtle
             Console.WriteLine("End");
         }
 
+        /// builds subtitle Queue
         static Queue<SubtitleViewModel> FillSubtitles(string srtFileName)
         {
-
             int counter = 0;
             string line;
             int PartCollected = 0;
